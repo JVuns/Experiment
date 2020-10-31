@@ -1,0 +1,45 @@
+You are a senior programmer for the Toyobo car company. Car business has been great but recently many more competitors have appeared on the market. The Toyobo CEO herself asked you to make a simulator to simulate and compare many car models from other car companies from other companies against each other to see which performs the best. The application would then be called "Best Car Comparator Ever". You have studied a lot of programming recently and accepted the job. This is what you have thought so far:
+
+Two Python classes have to be made. the `Car` class and the `Company` class. `Car` is a class that can instantiate individual `Car` objects later on with these attributes:
+
+- model: string # The model of the car, essentially the name of the car.
+- speed: int # The average speed of the car. We use km/h here for this.
+- tank_capacity: float # The max capacity of the gas tank in Liters
+- fuel_usage: float # The usage of gas per set of distance. The unit is L/100Km ( Liters per 100 Kilometer. If a car uses 2.1L to traverse 25Km it means that the fuel_usage is 8.4. )
+
+Make sure to make the constructor with `def __init__(.......):` for all the attributes for the `Car` class, so the variable assignment is easy.
+
+Here are the methods you should implement for the `Car` class:
+
+- `def max_distance(self) -> float:` # Calculate the maximum distance can run using tank_capacity, fuel_usage, and speed then return the number. Think of the formula yourself
+- `def max_duration(self) -> float :` # Calculate how many minutes can the car traverse with no interruptions. Then, return the float
+- `def is_better_than(sef, othler_car: Car):` # This function will compare the current `Car` object and the other 
+  `Car` object from the other_car argument. This should return "yes" if the current car object max_distance() and max_duration() 
+   is larger than the other car. returns "maybe" if only one is larger, and "no" if none of them is larger.
+- `def compare_cars(self, other_company: Company):` # This takes 1 arguments. other_company is the company 
+   the car selected from our_car will be tested. This method will run the `is_better_than` method from our 
+   car to every car from the other company and will print an output to the terminal, based on how many cars 
+   our car beat. Ex. the terminal will print: "The car, {CAR_NAME} is better than 6 out of 10 of all the cars 
+   in {COMPANY_NAME} company."
+
+Okay, so that's the `Car` class. Now, we can move on to the `Company` class. The attributes in the class should be:
+
+- name: string # The name of the company
+- cars: Car[] # A list of `Car` objects. Car models that this company manufactures.
+
+No methods have to be implemented for the `company` class!
+
+If you are done with the code, you can test it using this snippet:
+
+car1 = Car("Model S", 50, 37, 8.5)
+car2 = Car("Model 3", 45, 40, 10.2)
+car3 = Car("Model X", 55, 46, 7.9)
+car4 = Car("Rock", 50, 45, 9.4)
+
+company1 = Company("Tebsla", [car1, car2, car3])
+
+print(car4.is_better_than(car1)) # Prints "yes"
+print(car2.is_better_than(car3)) # Prints "no"
+print(car1.is_better_than(car2)) # Prints "maybe"
+
+print(car4.compare_cars(company1)) # Prints "Our car, Rock is better than 2 out of 3 of all the cars in their company."
