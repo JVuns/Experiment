@@ -20,13 +20,13 @@ class Car:
     def compare_cars(self, other_company):
         low = 0
         high= 0
-        for a in other_company:
+        for a in other_company.cars:
             if self.is_better_than(a) == "yes":
                 low += 1
                 high += 1
             elif self.is_better_than(a) == "no":
                 high += 1
-        return (f"Our car, {self.model} is better than {low} out of {high} of all the cars in {other_company} company.")
+        return (f"Our car, {self.model} is better than {low} out of {high} of all the cars in {other_company.name} company.")
 
 class Company():
     def __init__(self, name, cars):
@@ -38,9 +38,10 @@ car2 = Car("Model 3", 45, 40, 10.2)
 car3 = Car("Model X", 55, 46, 7.9)
 car4 = Car("Rock", 50, 45, 9.4)
 
-Tebsla = [car1, car2, car3, car4]
-print(car4.compare_cars(Tebsla))
+company1 = Company("Tebsla", [car1, car2, car3])
 
 print(car4.is_better_than(car1)) # Prints "yes"
 print(car2.is_better_than(car3)) # Prints "no"
 print(car1.is_better_than(car2)) # Prints "maybe"
+
+print(car4.compare_cars(company1)) # Prints "Our car, Rock is better than 2 out of 3 of all the cars in their company."
